@@ -1,0 +1,511 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Cyber Encryption Theme Colors */
+    --cyber-primary: 180 100% 50%;
+    --cyber-secondary: 240 100% 50%;
+    --cyber-accent: 300 100% 50%;
+    --cyber-success: 120 100% 50%;
+    --cyber-warning: 60 100% 50%;
+    --cyber-error: 0 100% 50%;
+    --cyber-bg: 240 10% 3.9%;
+    --cyber-card: 240 10% 6%;
+    --cyber-border: 240 3.7% 15.9%;
+    --cyber-text: 0 0% 98%;
+    --cyber-muted: 240 3.7% 15.9%;
+    --cyber-muted-foreground: 240 5% 64.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Cyber Theme Dark Mode */
+  .cyber-theme {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Cyber Encryption Theme Animations and Effects */
+@layer components {
+  /* Glowing border animation */
+  .cyber-border-glow {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, hsl(var(--cyber-primary)), hsl(var(--cyber-secondary)), hsl(var(--cyber-accent))) border-box;
+    background-clip: padding-box, border-box;
+    animation: cyber-glow 3s ease-in-out infinite alternate;
+  }
+
+  .cyber-border-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, hsl(var(--cyber-primary)), hsl(var(--cyber-secondary)), hsl(var(--cyber-accent)));
+    border-radius: inherit;
+    z-index: -1;
+    animation: cyber-glow 3s ease-in-out infinite alternate;
+  }
+
+  /* Matrix rain effect */
+  .matrix-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .matrix-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(90deg, transparent 98%, hsl(var(--cyber-primary)) 100%),
+      linear-gradient(180deg, transparent 98%, hsl(var(--cyber-secondary)) 100%);
+    background-size: 20px 20px;
+    animation: matrix-rain 20s linear infinite;
+    opacity: 0.1;
+    z-index: -1;
+  }
+
+  /* Cyber button styles */
+  .cyber-button {
+    position: relative;
+    background: linear-gradient(45deg, hsl(var(--cyber-primary)), hsl(var(--cyber-secondary)));
+    border: 2px solid hsl(var(--cyber-primary));
+    color: hsl(var(--cyber-primary-foreground));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .cyber-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .cyber-button:hover::before {
+    left: 100%;
+  }
+
+  .cyber-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+  }
+
+  /* Cyber input styles */
+  .cyber-input {
+    background: hsl(var(--cyber-card));
+    border: 2px solid hsl(var(--cyber-border));
+    color: hsl(var(--cyber-text));
+    transition: all 0.3s ease;
+  }
+
+  .cyber-input:focus {
+    border-color: hsl(var(--cyber-primary));
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+    outline: none;
+  }
+
+  /* Cyber card styles */
+  .cyber-card {
+    background: hsl(var(--cyber-card));
+    border: 1px solid hsl(var(--cyber-border));
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .cyber-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 255, 255, 0.2);
+  }
+
+  /* Scanning line effect */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--cyber-primary)), transparent);
+    animation: scan-line 2s linear infinite;
+  }
+
+  /* Pulse animation */
+  .cyber-pulse {
+    animation: cyber-pulse 2s ease-in-out infinite;
+  }
+
+  /* Floating animation */
+  .cyber-float {
+    animation: cyber-float 6s ease-in-out infinite;
+  }
+
+  /* Glitch effect */
+  .cyber-glitch {
+    position: relative;
+  }
+
+  .cyber-glitch::before,
+  .cyber-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cyber-glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: hsl(var(--cyber-primary));
+    z-index: -1;
+  }
+
+  .cyber-glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: hsl(var(--cyber-accent));
+    z-index: -2;
+  }
+
+  /* Terminal typing effect */
+  .terminal-typing {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--cyber-primary));
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  /* Holographic effect */
+  .holographic {
+    background: linear-gradient(45deg, 
+      hsl(var(--cyber-primary)) 0%, 
+      hsl(var(--cyber-secondary)) 25%, 
+      hsl(var(--cyber-accent)) 50%, 
+      hsl(var(--cyber-primary)) 75%, 
+      hsl(var(--cyber-secondary)) 100%);
+    background-size: 400% 400%;
+    animation: holographic 3s ease-in-out infinite;
+  }
+
+  /* Data stream effect */
+  .data-stream {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-stream::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+    animation: data-stream 2s linear infinite;
+  }
+
+  /* Security badge */
+  .security-badge {
+    position: relative;
+    background: linear-gradient(45deg, hsl(var(--cyber-success)), hsl(var(--cyber-primary)));
+    border-radius: 50%;
+    animation: security-badge 2s ease-in-out infinite;
+  }
+
+  /* Encryption progress */
+  .encryption-progress {
+    background: linear-gradient(90deg, hsl(var(--cyber-primary)), hsl(var(--cyber-secondary)));
+    background-size: 200% 100%;
+    animation: encryption-progress 2s ease-in-out infinite;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes cyber-glow {
+  0% {
+    box-shadow: 0 0 5px hsl(var(--cyber-primary)), 0 0 10px hsl(var(--cyber-primary)), 0 0 15px hsl(var(--cyber-primary));
+  }
+  100% {
+    box-shadow: 0 0 10px hsl(var(--cyber-secondary)), 0 0 20px hsl(var(--cyber-secondary)), 0 0 30px hsl(var(--cyber-secondary));
+  }
+}
+
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes cyber-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: hsl(var(--cyber-primary));
+  }
+}
+
+@keyframes holographic {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes security-badge {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+@keyframes encryption-progress {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive cyber grid */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 20px);
+  }
+}
